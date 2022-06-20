@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
+import 'dotenv/config'
 
-mongoose.connect('mongodb+srv://mongoUser:mongoUser@cluster0.j25ouwy.mongodb.net/test', {
+mongoose.connect(`mongodb+srv://mongoUser:${process.env.PASSWORD}@cluster0.j25ouwy.mongodb.net/test`, {
     dbName: 'users-base',
 })
 const db = mongoose.connection

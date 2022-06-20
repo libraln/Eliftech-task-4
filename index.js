@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import express from 'express'
 import serverRoutes from './routes/routes.js'
 import mongoose from './dbConnection.js'
