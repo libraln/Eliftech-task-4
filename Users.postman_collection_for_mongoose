@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "8b4bef1d-2374-40e3-93ae-6c3f679a3f06",
+		"name": "Users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20373887"
+	},
+	"item": [
+		{
+			"name": "Get All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 1,\r\n        \"email\": \"john.dou@reqres.in\",\r\n        \"first_name\": \"john\",\r\n        \"last_name\": \"dou\",\r\n        \"avatar\": \"https://reqres.in/img/faces/7-image.jpg\"\r\n    }"
+				},
+				"url": {
+					"raw": "{{url}}/api/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"_id\": ObjectId(\"62af94aeeb63d4c0b7bca053\")\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/users/62af94aeeb63d4c0b7bca053",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"62af94aeeb63d4c0b7bca053"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit User",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"_id\": \"62b034a2e55533d515bfb9f8\",\r\n        \"email\": \"EDITED.dou@reqres.in\",\r\n        \"first_name\": \"john\",\r\n        \"last_name\": \"dou\",\r\n        \"avatar\": \"https://reqres.in/img/faces/7-image.jpg\",\r\n        \"__v\": 0\r\n    }"
+				},
+				"url": {
+					"raw": "{{url}}/api/users/{{id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

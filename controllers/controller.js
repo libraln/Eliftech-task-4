@@ -1,3 +1,6 @@
+import mongoose from 'mongoose'
+import User from "./../models/User.js"
+
 let users = [
     {
         "id": 7,
@@ -42,23 +45,36 @@ let users = [
         "avatar": "https://reqres.in/img/faces/12-image.jpg"
     }
 ]
-export const getAllUsers = (req, res) => {
+export const getAllUsers = async(req, res) => {
+    let users = []
+    users = await User.find({})
     res.status(200).json(users)
 }
 
-export const createUser = (req, res) => {
-    let newUser = {
-        ...req.body
-    }
-    users.push(newUser)
-    res.status(200).json(newUser)
+export const createUser = async(req, res) => {
+    let user = new User({
+        email: req.body.email,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        avatar: req.body.avatar
+    })
+    console.log(user);
+    await user.save()
+    res.status(201).json(user)
 }
-export const deleteUser = (req, res) => {
-    console.log(req.body.id);
+export const deleteUser = async(req, res) => {
+    await User.deleteOne({_id: req.body._id})
+    console.log(req.body._id);
     res.json({})
 }
-export const updateUser = (req, res) => {
-    let user = { ...req.body }
-    console.log(user);
+export const updateUser = async(req, res) => {
+    let filter = {_id: req.body._id}
+    let user = await User.findOneAndUpdate(filter, 
+    { 
+        email: req.body.email,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        avatar: req.body.avatar
+    })
     res.status(201).json(user)
 }
